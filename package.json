@@ -1,9 +1,7 @@
 {
   "dependencies": {
     "@prismicio/client": "^6.7.1",
-    "gsap": "^3.11.3",
-    "prismic-dom": "^2.2.7",
-    "pug": "^3.0.2"
+    "express": "^4.18.2"
   },
   "name": "aww",
   "version": "1.0.0",
@@ -16,6 +14,7 @@
     "eslint": "^8.28.0",
     "file-loader": "^6.2.0",
     "glslify-loader": "^2.0.0",
+    "gsap": "^3.11.3",
     "html-webpack-plugin": "^5.5.0",
     "image-minimizer-webpack-plugin": "^3.8.1",
     "imagemin": "^8.0.1",
@@ -28,6 +27,8 @@
     "mini-css-extract-plugin": "2.7.0",
     "nodelist-foreach-polyfill": "^1.2.0",
     "postcss-loader": "^7.0.2",
+    "prismic-dom": "^2.2.7",
+    "pug": "^3.0.2",
     "sass": "^1.56.1",
     "sass-loader": "^13.2.0",
     "terser-webpack-plugin": "^5.3.6",
@@ -37,9 +38,11 @@
     "webpack-merge": "5.8.0"
   },
   "scripts": {
-    "build": "webpack --progress --config webpack.config.build.js",
-    "development": "webpack-dev-server --progress --config webpack.config.development.js",
-    "start": "npm run development"
+    "backend:build": "node app.js",
+    "backend:development": "nodemon app.js",
+    "frontend:build": "webpack --progress --config webpack.config.build.js",
+    "frontend:development": "webpack-dev-server --progress --config webpack.config.development.js",
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
   },
   "author": "Joseph Dima"
 }
