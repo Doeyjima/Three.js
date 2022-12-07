@@ -8,13 +8,23 @@ app.set('views',path.join(__dirname,'views'))
 app.set('view engine', 'pug')
 
 app.get('/', (req,res) => {
-  res.render('index',{
-    meta:{
+  res.render('pages/home')
 
-      title:'aww',
-      description: 'metadata description'
-    }
-  })
+})
+
+app.get('/about', (req,res) => {
+  res.render('pages/about')
+
+})
+
+app.get('/details/:', (req,res) => {
+  res.render('pages/collections')
+
+})
+
+app.get('/details/:', (req,res) => {
+  res.render('pages/detail')
+
 })
 
 app.listen(port, () => {
